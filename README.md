@@ -5,6 +5,7 @@ if for some reason is useful just take the project and modify :D
 # ROUTES
 
 /auth signin 
+
 /auth signup
 
 /images upload
@@ -13,6 +14,9 @@ if for some reason is useful just take the project and modify :D
 # ENV VARS
 
 PORT
+
 MONGO_USERNAME
+
 MONGO_PASSWORD
+
 SECRET (jwt secret)
