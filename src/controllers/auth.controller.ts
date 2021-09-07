@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { Signin, Signup} from "../interfaces/auth";
+import { Signin, Signup } from "../interfaces/auth";
 import User from "../models/User";
 import Role, { Roles } from "../models/Roles";
 import jwt from "jsonwebtoken";
@@ -15,9 +15,7 @@ interface SignUpRequest<T> extends Request {
 export class AuthController {
   async signin(req: SignInRequest<Signin>, res: Response) {
     const { username, password } = req.body;
-    const userFound = await User.findOne({ username }).populate(
-      "role"
-    );
+    const userFound = await User.findOne({ username }).populate("role");
 
     if (!userFound) return res.status(400).json({ message: "User not found" });
     const passwordFound = await User.comparePassword(
