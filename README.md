@@ -14,7 +14,7 @@ if for some reason is useful for you just take the project and modify :D
 
 /images delete
 
-
+/image delete/:id
 
 
 # ENV VARS
