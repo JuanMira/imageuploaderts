@@ -5,11 +5,13 @@ import Images from "../models/Images";
 import { Params, Query, Request } from "../interfaces/middlewares";
 import rimraf from "rimraf";
 
-const uploadFile = multer({ dest: "uploads/", storage: storage }).array(
+const uploadFile = multer({ dest: "uploads/", storage }).array(
   "photos"
 );
 
-interface RequestQuery extends Query {}
+interface RequestQuery extends Query {
+  page:string;
+}
 
 interface RequestParams extends Params {
   userId: string;
@@ -17,7 +19,7 @@ interface RequestParams extends Params {
 
 export class ImageController {
   async upload(req: Request<any, RequestQuery, RequestParams>, res: Response) {
-    uploadFile(req, res, function (err) {
+    uploadFile(req, res, (err)=> {
       if (err instanceof multer.MulterError) {
         return res.status(400).json({ message: "error uploading file" });
       } else {
@@ -44,7 +46,7 @@ export class ImageController {
     res: Response
   ) {
     try {
-      const deleted = await Images.deleteMany({ userId: req.userId });      
+      const deleted = await Images.deleteMany({ userId: req.userId });
       rimraf.sync(`./src/uploads/${req.userId}`);
       res.status(200).json({ message: "deleted successfully" });
     } catch (error) {

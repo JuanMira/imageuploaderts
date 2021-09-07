@@ -9,8 +9,7 @@ export async function createRoles(){
             new Roles({name:"user"}).save(),
             new Roles({name:"admin"}).save()
         ]);
-        console.log(values)
     } catch (error) {
-        console.log(error)        
+        console.log(error)
     }
 }

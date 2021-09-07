@@ -8,8 +8,8 @@ const tokenMiddleware = new TokenMiddleware();
 
 
 router.post(
-  "/upload",  
-  tokenMiddleware.verifyToken,  
+  "/upload",
+  tokenMiddleware.verifyToken,
   imageController.upload
 );
 

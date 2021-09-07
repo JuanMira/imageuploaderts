@@ -12,7 +12,7 @@ interface RequestParams extends Params {
 }
 
 const storage = multer.diskStorage({
-  destination: function (
+  destination (
     req: Request<any, RequestQuery, RequestParams>,
     file,
     cb
@@ -24,7 +24,7 @@ const storage = multer.diskStorage({
       cb(null, dirname + `/uploads/${req.userId}`);
     }
   },
-  filename: function (
+  filename (
     req: Request<any, RequestQuery, RequestParams>,
     file,
     cb

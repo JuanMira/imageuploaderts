@@ -10,6 +10,12 @@ if for some reason is useful for you just take the project and modify :D
 
 /images upload
 
+/images download (fetch data)
+
+/images delete
+
+
+
 
 # ENV VARS
 

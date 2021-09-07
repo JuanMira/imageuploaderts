@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
-    "build": "babel . --out-dir build",
-    "dev": "nodemon src/server.ts --exec babel-node --extensions \".ts\" src/server.js ",
-    "start": "node server.js"
+    "build": "tsc",
+    "dev": "nodemon ./server.ts --exec babel-node --extensions \".ts\" ./server.js ",
+    "start": "node dist/server.js"
   },
   "keywords": [],
   "author": "JuanMira",

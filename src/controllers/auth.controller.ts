@@ -15,7 +15,7 @@ interface SignUpRequest<T> extends Request {
 export class AuthController {
   async signin(req: SignInRequest<Signin>, res: Response) {
     const { username, password } = req.body;
-    const userFound = await User.findOne({ username: username }).populate(
+    const userFound = await User.findOne({ username }).populate(
       "role"
     );
 
