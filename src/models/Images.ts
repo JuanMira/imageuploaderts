@@ -5,15 +5,15 @@ export interface Image {
   name: string;
   path: string;
   creationDate: Date;
-  userId:ObjectId
+  userId: string;
 }
 
 const imageSchema = new Schema<Image>(
   {
     name: String,
     path: String,
-    creationDate: Date, 
-    userId:Schema.Types.ObjectId   
+    creationDate: Date,
+    userId: String,
   },
   {
     versionKey: false,

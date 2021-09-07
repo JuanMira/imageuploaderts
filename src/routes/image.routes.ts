@@ -13,6 +13,16 @@ router.post(
   imageController.upload
 );
 
+router.get(
+  "/download",
+  tokenMiddleware.verifyToken,
+  imageController.getAllPhotos
+)
 
+router.delete(
+  "/delete",
+  tokenMiddleware.verifyToken,
+  imageController.deletePhotos
+)
 
 export default router;
