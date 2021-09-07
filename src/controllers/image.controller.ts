@@ -1,6 +1,8 @@
 import { Request, Response } from 'express'
 import storage from "../libs/multer";
 import multer from "multer";
+import Images from '../models/Images';
+
 const uploadFile = multer({dest:"uploads/",storage:storage}).array('photos')
 
 export class ImageController{
