@@ -25,4 +25,10 @@ router.delete(
   imageController.deletePhotos
 )
 
+router.delete(
+  "/delete/:imageId",
+  tokenMiddleware.verifyToken,
+  imageController.deletePhoto
+)
+
 export default router;
