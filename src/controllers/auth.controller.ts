@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { Signin, Signup } from "../interfaces/auth";
+import { Signin, Signup, Token } from "../interfaces/auth";
 import User from "../models/User";
 import Role, { Roles } from "../models/Roles";
 import jwt from "jsonwebtoken";
@@ -10,6 +10,10 @@ interface SignInRequest<T> extends Request {
 
 interface SignUpRequest<T> extends Request {
   body: T;
+}
+
+interface CheckTokenRequest<T> extends Request{
+  body:T;
 }
 
 export class AuthController {
@@ -62,5 +66,18 @@ export class AuthController {
 
     const savedUser = await newUser.save();
     res.status(200).json({ message: "user created succesfully" });
+  }
+
+  check(req:CheckTokenRequest<Token>,res:Response){
+    const token = req.body.token;    
+    if(token){
+      jwt.verify(token,process.env.SECRET,(err,verified)=>{
+        if(err){
+          res.status(400).json({error:"Token invalid"})
+        }else{
+          res.status(204).json({})
+        }
+      });      
+    }    
   }
 }

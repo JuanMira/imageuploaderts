@@ -12,3 +12,7 @@ export interface Signup {
   avatarImage?: string;
   role?: string[];
 }
+
+export interface Token{
+  token:string;
+}

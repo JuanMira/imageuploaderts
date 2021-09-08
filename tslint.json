@@ -9,7 +9,7 @@
         "no-console":false,
         "no-empty-interface": false,
         "ban-types":true,
-        "prefer-for-of":false
-    },
+        "prefer-for-of":false        
+    },    
     "rulesDirectory": []
 }

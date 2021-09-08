@@ -15,8 +15,7 @@ export default class JWTMiddleware{
         try {
             const token = req.headers.authorization;
             if(!token) return res.status(403).json({message:"no token provider"})
-            const decoded = verifyToken<TokenPayload>(token,process.env.SECRET)
-
+            const decoded = verifyToken<TokenPayload>(token,process.env.SECRET)            
             req.userId = decoded.id;
 
             const userFound = await User.findById(req.userId,{password:0});
