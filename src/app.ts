@@ -19,6 +19,7 @@ createRoles();
 app.set('pkg',pkg);
 app.use(express.json())
 app.use(cors())
+app.use('/uploads',express.static(__dirname + '/uploads'))
 
 app.get("/",(req:Request,res:Response)=>{
     res.json({
