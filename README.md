@@ -16,6 +16,10 @@ if for some reason is useful for you just take the project and modify :D
 
 /image delete/:id
 
+/user/upload
+
+/user/getuser
+
 
 # ENV VARS
 
