@@ -16,3 +16,5 @@ export interface Signup {
 export interface Token{
   token:string;
 }
+
+
