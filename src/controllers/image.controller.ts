@@ -1,5 +1,5 @@
 import { Response } from "express";
-import storage from "../libs/multer";
+import { imageStorage } from "../libs/multer";
 import fs from "fs";
 import multer from "multer";
 import Images, { Image } from "../models/Images";
@@ -7,7 +7,9 @@ import { Params, Query, Request } from "../interfaces/middlewares";
 import rimraf from "rimraf";
 import mongoose from "mongoose";
 
-const uploadFile = multer({ dest: "uploads/", storage }).array("photos");
+const uploadFile = multer({
+  storage: imageStorage,
+}).array("photos");
 
 interface RequestQuery extends Query {
   page: string;
@@ -27,7 +29,7 @@ export class ImageController {
         return;
       }
     });
-    res.json({ message: `uploaded successfully` });
+    return res.json({ message: `uploaded successfully` });
   }
 
   async getAllPhotos(

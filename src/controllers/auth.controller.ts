@@ -4,20 +4,13 @@ import User from "../models/User";
 import Role, { Roles } from "../models/Roles";
 import jwt from "jsonwebtoken";
 
-interface SignInRequest<T> extends Request {
+interface CustomRequest<T> extends Request {
   body: T;
 }
 
-interface SignUpRequest<T> extends Request {
-  body: T;
-}
-
-interface CheckTokenRequest<T> extends Request{
-  body:T;
-}
 
 export class AuthController {
-  async signin(req: SignInRequest<Signin>, res: Response) {
+  async signin(req: CustomRequest<Signin>, res: Response) {
     const { username, password } = req.body;
     const userFound = await User.findOne({ username }).populate("role");
 
@@ -36,7 +29,7 @@ export class AuthController {
     res.json({ token });
   }
 
-  async signup(req: SignUpRequest<Signup>, res: Response) {
+  async signup(req: CustomRequest<Signup>, res: Response) {
     const {
       username,
       email,
@@ -68,7 +61,7 @@ export class AuthController {
     res.status(200).json({ message: "user created succesfully" });
   }
 
-  check(req:CheckTokenRequest<Token>,res:Response){
+  check(req:CustomRequest<Token>,res:Response){
     const token = req.body.token;    
     if(token){
       jwt.verify(token,process.env.SECRET,(err,verified)=>{

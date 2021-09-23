@@ -8,9 +8,7 @@ import {
 import multer from "multer";
 import { avatarStorage } from "../libs/multer";
 
-const upload = multer({ dest: "uploads/", storage: avatarStorage }).single(
-  "avatar"
-);
+const upload = multer({ storage: avatarStorage }).single("avatar");
 
 interface RequestQuery extends Query {
   page: string;
@@ -44,7 +42,7 @@ export default class UserController {
       } else {
         return;
       }
-    });    
+    });
 
     return res
       .status(200)
