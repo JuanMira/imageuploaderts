@@ -56,7 +56,7 @@ export default class UserController {
     const body: UserType = req.body;    
     try {
       await User.findByIdAndUpdate(req.userId,body)
-      res.status(200).json({message:"debug"})
+      res.status(200).json({message:"user updated successfully"})
       
     } catch (error) {
       res.status(404).json({ message: "Something went wrong please try again" });

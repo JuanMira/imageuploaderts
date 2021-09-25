@@ -7,7 +7,7 @@ import { avatarStorage } from "../libs/multer";
 const router = Router();
 const userController = new UserController();
 const middlewareToken = new TokenMiddleware();
-const upload = multer({ storage: avatarStorage });
+//const upload = multer({ storage: avatarStorage });
 
 router.get("/getuser", middlewareToken.verifyToken, userController.getUser);
 router.put(
