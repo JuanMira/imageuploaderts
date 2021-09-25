@@ -16,4 +16,10 @@ router.put(
   userController.uploadImage
 );
 
+router.put(
+  "/updateUser",
+  middlewareToken.verifyToken,
+  userController.updateProfile
+)
+
 export default router;

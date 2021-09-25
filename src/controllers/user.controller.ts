@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import User from "../models/User";
+import User, { User as UserType } from "../models/User";
 import {
   Params,
   Query,
@@ -47,5 +47,19 @@ export default class UserController {
     return res
       .status(200)
       .json({ message: "Avatar image uploaded successfully" });
+  }
+
+  async updateProfile(
+    req: CustomRequest<any, RequestQuery, RequestParams>,
+    res: Response
+  ) {
+    const body: UserType = req.body;    
+    try {
+      await User.findByIdAndUpdate(req.userId,body)
+      res.status(200).json({message:"debug"})
+      
+    } catch (error) {
+      res.status(404).json({ message: "Something went wrong please try again" });
+    }
   }
 }
